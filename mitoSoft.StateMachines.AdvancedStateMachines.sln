@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32922.545
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mitoSoft.StateMachine.AdvancedStateMachines", "mitoSoft.StateMachines.AdvancedStateMachines\mitoSoft.StateMachine.AdvancedStateMachines.csproj", "{C33F8E5B-D832-441D-AFFA-000E47161AF3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mitoSoft.StateMachine.AdvancedStateMachines.ExampleUsage", "mitoSoft.StateMachines.AdvancedStateMachines.ExampleUsage\mitoSoft.StateMachine.AdvancedStateMachines.ExampleUsage.csproj", "{A376C708-381C-4628-B85A-4E826AF34AEB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C33F8E5B-D832-441D-AFFA-000E47161AF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C33F8E5B-D832-441D-AFFA-000E47161AF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C33F8E5B-D832-441D-AFFA-000E47161AF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C33F8E5B-D832-441D-AFFA-000E47161AF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A376C708-381C-4628-B85A-4E826AF34AEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A376C708-381C-4628-B85A-4E826AF34AEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A376C708-381C-4628-B85A-4E826AF34AEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A376C708-381C-4628-B85A-4E826AF34AEB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D8FC1B96-1E87-4BA0-A9E5-34E403D67931}
+	EndGlobalSection
+EndGlobal
