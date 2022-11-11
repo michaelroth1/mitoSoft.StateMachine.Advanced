@@ -52,4 +52,3 @@ new TransitionalStateMachine()
 Console.WriteLine("Next");
 
 Console.WriteLine("Done");
-Console.ReadLine();
