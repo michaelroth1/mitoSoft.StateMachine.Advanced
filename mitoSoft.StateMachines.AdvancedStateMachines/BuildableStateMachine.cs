@@ -1,4 +1,5 @@
-﻿using mitoSoft.Workflows;
+﻿using mitoSoft.Graphs.Exceptions;
+using mitoSoft.Workflows;
 
 namespace mitoSoft.Workflows.AdvancedStateMachines
 {
@@ -60,6 +61,11 @@ namespace mitoSoft.Workflows.AdvancedStateMachines
             this.AddNode(new mitoSoft.Workflows.State(name, stateAction, stateExitAction));
 
             return this;
+        }
+
+        public bool TempEdgeExists(string source, string target)
+        {                     
+            return _edges.Any(x=>x.Source==source && x.Target == target);
         }
 
         //public BuildableStateMachine AddTransition(string name, TransitionHandler transitionActiom)

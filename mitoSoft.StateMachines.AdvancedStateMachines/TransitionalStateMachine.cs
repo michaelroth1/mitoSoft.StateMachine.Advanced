@@ -1,4 +1,6 @@
-﻿namespace mitoSoft.Workflows.AdvancedStateMachines
+﻿using mitoSoft.Graphs.Exceptions;
+
+namespace mitoSoft.Workflows.AdvancedStateMachines
 {
     public class TransitionalStateMachine : BuildableStateMachine
     {
@@ -29,7 +31,7 @@
             return (TransitionalStateMachine)base.Build();
         }
 
-        public BuildableStateMachine AddTransition(string name, TransitionHandler transitionAction)
+        public TransitionalStateMachine AddTransition(string name, TransitionHandler transitionAction)
         {
             this.AddTransition(new Transition(name, transitionAction));
 
@@ -52,7 +54,7 @@
                 this.AddEdge($"{transition.Name}", condition.Key, condition.Value);
             }
 
-            this.TryAddEdge($"{transition.Name}", $"{transition.Name}"); //Notfallplan um Deadlock zu vermeiden
+            this.TryAddEdge(transition.Name, transition.Name); //Notfallplan um Deadlock zu vermeiden
         }
 
         /// <summary>
@@ -63,9 +65,17 @@
         {
             try
             {
-                this.AddEdge(from, to);
+                if(!TempEdgeExists(from,to))
+                    this.AddEdge(from, to);
             }
             catch { }
+        }
+         
+
+
+        public new bool TempEdgeExists(string source, string target)
+        {
+            return base.TempEdgeExists(source, target);  
         }
     }
 }
