@@ -24,6 +24,18 @@ namespace mitoSoft.StateMachine.AdvancedStateMachines
             return this;
         }
 
+        public SequenceStateMachine AddSubSequence(SubSequenceState node)
+        {
+            if (this.Start == null)
+            {
+                this.Start = node;
+            }
+
+            base.AddNode(node);
+
+            return this;
+        }
+
         public new SequenceStateMachine AddSingleNode(string nodeName, string nextNode, Action action)
         {
             return (SequenceStateMachine)base.AddSingleNode(nodeName, nextNode, action);
