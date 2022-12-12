@@ -55,7 +55,7 @@ namespace mitoSoft.StateMachine.AdvancedStateMachines
             return this;
         }
 
-        public ParallelStateMachine AddConditionalNode(string name, TransitionHandler transitionAction)
+        public ParallelStateMachine AddConditions(string name, TransitionHandler transitionAction)
         {
             return (ParallelStateMachine)base.AddTransition(name, transitionAction);
         }

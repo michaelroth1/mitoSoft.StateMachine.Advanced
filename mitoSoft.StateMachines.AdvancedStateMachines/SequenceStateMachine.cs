@@ -24,14 +24,21 @@ namespace mitoSoft.StateMachine.AdvancedStateMachines
             return this;
         }
 
-        public SequenceStateMachine AddSubSequence(SubSequenceState node)
+        public SequenceStateMachine AddSubWorkflow(string name, Workflows.StateMachine subStateMachine, string nextNode = null)
         {
+            var node = new SubWorkflowState(name,subStateMachine);
+
             if (this.Start == null)
             {
                 this.Start = node;
             }
 
             base.AddNode(node);
+
+            if (nextNode != null)
+            {
+                base.AddEdge(node.Name, nextNode);
+            }
 
             return this;
         }
@@ -61,9 +68,9 @@ namespace mitoSoft.StateMachine.AdvancedStateMachines
             return (SequenceStateMachine)base.AddNode(nodeName, action, exitAction);
         }
 
-        public new SequenceStateMachine AddConditionalNode(string name, TransitionHandler transitionAction)
+        public new SequenceStateMachine AddConditions(string name, TransitionHandler transitionAction)
         {
-            return (SequenceStateMachine)base.AddTransition(name, transitionAction);
+            return (SequenceStateMachine)base.AddConditions(name, transitionAction);
         }
 
         public new SequenceStateMachine AddEdge(string sourceName, string targetName)

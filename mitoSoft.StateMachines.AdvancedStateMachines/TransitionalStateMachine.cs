@@ -1,4 +1,5 @@
 ﻿using mitoSoft.Graphs.Exceptions;
+using mitoSoft.StateMachine.AdvancedStateMachines;
 
 namespace mitoSoft.Workflows.AdvancedStateMachines
 {
@@ -47,14 +48,15 @@ namespace mitoSoft.Workflows.AdvancedStateMachines
 
             transition.TransitionHandler.Invoke(this, args);
 
-            this.AddNode(new mitoSoft.Workflows.State($"{transition.Name}", args.Action));
+            this.AddNode(new TransitionState($"{transition.Name}_Transi", args.Action));
+            this.AddEdge($"{transition.Name}", $"{transition.Name}_Transi");
 
             foreach (var condition in args.Conditions)
             {
-                this.AddEdge($"{transition.Name}", condition.Key, condition.Value);
+                this.AddEdge($"{transition.Name}_Transi", condition.Key, condition.Value);
             }
 
-            this.TryAddEdge($"{transition.Name}", $"{transition.Name}"); //Notfallplan um Deadlock zu vermeiden
+            this.TryAddEdge($"{transition.Name}_Transi", $"{transition.Name}_Transi"); //Notfallplan um Deadlock zu vermeiden
         }
 
         /// <summary>

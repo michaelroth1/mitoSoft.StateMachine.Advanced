@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace mitoSoft.StateMachine.AdvancedStateMachines
 {
-    public class SubSequenceState : State
+    public class SubWorkflowState : State
     {
         Workflows.StateMachine SubSequenceStateMachine;
         
-        public SubSequenceState(string name,Workflows.StateMachine _subSequenceStateMachine) : base(name)
+        public SubWorkflowState(string name,Workflows.StateMachine _subSequenceStateMachine) : base(name)
         {
             SubSequenceStateMachine = _subSequenceStateMachine;
         }
