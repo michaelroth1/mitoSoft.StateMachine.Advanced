@@ -13,7 +13,7 @@ namespace mitoSoft.StateMachine.AdvancedStateMachines
     public class SequenceState : State
     {
 
-        SequenceStateMachine stateMachine;
+        public SequenceStateMachine stateMachine;
         List<State> _internStates = new List<State>();
 
         public SequenceState(string name) : base(name)

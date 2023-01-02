@@ -9,16 +9,16 @@ namespace mitoSoft.StateMachine.AdvancedStateMachines
 {
     public class SubWorkflowState : State
     {
-        Workflows.StateMachine SubSequenceStateMachine;
+        public Workflows.StateMachine SubWorkflowStateMachine;
         
         public SubWorkflowState(string name,Workflows.StateMachine _subSequenceStateMachine) : base(name)
         {
-            SubSequenceStateMachine = _subSequenceStateMachine;
+            SubWorkflowStateMachine = _subSequenceStateMachine;
         }
 
         public override void StateFunction()
         {
-            SubSequenceStateMachine.Invoke();
+            SubWorkflowStateMachine.Invoke();
         }
 
     }
