@@ -53,7 +53,7 @@ namespace mitoSoft.Workflows.AdvancedStateMachines
 
             foreach (var condition in args.Conditions)
             {
-                this.AddEdge($"{transition.Name}_Transi", condition.Key, condition.Value);
+                this.AddEdge($"{transition.Name}_Transi", condition.Key.Target, condition.Value, condition.Key.Name);
             }
 
             this.TryAddEdge($"{transition.Name}_Transi", $"{transition.Name}_Transi"); //Notfallplan um Deadlock zu vermeiden

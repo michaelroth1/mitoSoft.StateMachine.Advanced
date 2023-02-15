@@ -24,25 +24,6 @@ namespace mitoSoft.StateMachine.AdvancedStateMachines
             return this;
         }
 
-        public SequenceStateMachine AddSubWorkflow(string name, Workflows.StateMachine subStateMachine, string nextNode = null)
-        {
-            var node = new SubWorkflowState(name,subStateMachine);
-
-            if (this.Start == null)
-            {
-                this.Start = node;
-            }
-
-            base.AddNode(node);
-
-            if (nextNode != null)
-            {
-                base.AddEdge(node.Name, nextNode);
-            }
-
-            return this;
-        }
-
         public new SequenceStateMachine AddSingleNode(string nodeName, string nextNode, Action action)
         {
             return (SequenceStateMachine)base.AddSingleNode(nodeName, nextNode, action);
@@ -68,9 +49,9 @@ namespace mitoSoft.StateMachine.AdvancedStateMachines
             return (SequenceStateMachine)base.AddNode(nodeName, action, exitAction);
         }
 
-        public new SequenceStateMachine AddConditions(string name, TransitionHandler transitionAction)
+        public new SequenceStateMachine AddTransition(string name, TransitionHandler transitionAction)
         {
-            return (SequenceStateMachine)base.AddConditions(name, transitionAction);
+            return (SequenceStateMachine)base.AddTransition(name, transitionAction);
         }
 
         public new SequenceStateMachine AddEdge(string sourceName, string targetName)
@@ -91,26 +72,6 @@ namespace mitoSoft.StateMachine.AdvancedStateMachines
         public override SequenceStateMachine Build()
         {
             return (SequenceStateMachine)base.Build();
-        }
-
-        public List<string> GetAllNodes()
-        {
-            var nodes = new List<string>();
-            foreach (var item in _nodes)
-            {
-                nodes.Add(item.Key);
-            }
-            return  nodes;
-        }
-
-        public List<Workflows.Transition> GetAllEdges()
-        {
-            var edges = new List<Workflows.Transition>();
-            foreach (var item in Edges)
-            {
-                edges.Add(item);
-            }
-            return edges;
         }
     }
 }
