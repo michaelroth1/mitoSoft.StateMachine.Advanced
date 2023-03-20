@@ -14,7 +14,7 @@ namespace mitoSoft.StateMachine.AdvancedStateMachines
     {
 
         public SequenceStateMachine stateMachine;
-        List<State> _internStates = new List<State>();
+        public List<State> internStates = new List<State>();
 
         public SequenceState(string name) : base(name)
         {
@@ -23,13 +23,13 @@ namespace mitoSoft.StateMachine.AdvancedStateMachines
 
         public SequenceState AddToSequence(State state)
         {
-            _internStates.Add(state);
+            internStates.Add(state);
             return this;
         }
 
         public SequenceState AddToSequence(string name, Action action = null)
         {
-            _internStates.Add(new State(name, action ?? (() => { })));
+            internStates.Add(new State(name, action ?? (() => { })));
             return this;
         }
 
@@ -43,7 +43,7 @@ namespace mitoSoft.StateMachine.AdvancedStateMachines
         private void BuildSequence()
         {
             State tempNode = null;
-            foreach (var node in _internStates)
+            foreach (var node in internStates)
             {
                 if (tempNode != null)
                 {
@@ -51,7 +51,7 @@ namespace mitoSoft.StateMachine.AdvancedStateMachines
                 }
                 tempNode = node;
             }
-            stateMachine.AddNode(_internStates.Last());
+            stateMachine.AddNode(internStates.Last());
         }
     }
 }
