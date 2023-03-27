@@ -24,16 +24,16 @@ namespace mitoSoft.StateMachine.AdvancedStateMachines
 
         public override void StateFunction()
         {
-            List<Task> tasks = new List<Task>();
+            List<Thread> tasks = new List<Thread>();
 
             foreach (var machine in stateMachines)
             {
-                tasks.Add(new Task(machine.Invoke));
+                tasks.Add(new Thread(machine.Invoke));
             }
 
             tasks.ForEach(x => x.Start());
 
-            tasks.ForEach(x => x.Wait());
+            tasks.ForEach(x => x.Join());
         }
     }
 }
